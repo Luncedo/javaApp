@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card" style="width:400px;height:374px" th:fragment="productDiv">
+  <img class="card-img-top" src="https://dictionary.cambridge.org/images/thumb/book_noun_001_01679.jpg" alt="Card image" style="width:50%;align-self:center">
+  <div class="card-body">
+    <h4 class="card-title"  th:text="${product.courseName}">John Doe</h4>
+    <p class="card-text" th:text="${product.courseSubtitle}">Some example text some example text. John Doe is an architect and engineer</p>
+    <a href="#" class="btn btn-primary">See Profile</a>
+  </div>
+</div>
+</body>
+</html>
