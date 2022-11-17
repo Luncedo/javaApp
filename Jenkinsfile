@@ -1,4 +1,7 @@
 pipeline{
+  tools {
+    maven 'marven-3'
+  }
     agent any
     stages{
         stage("git checkout"){
