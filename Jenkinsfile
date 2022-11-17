@@ -1,9 +1,10 @@
-node{
-    stage('SCM checkout'){ 
-      git "https://github.com/Luncedo/javaApp.git"
-    }
-    stage('Compile-package'){
-      def mvnHome = tool name: 'marven-3', type: 'maven'
-      sh "${mvnHome}/bin/mvn package"
+pipeline{
+    agent any
+    stages{
+        stage("git checkout"){
+            steps{
+                git branch: 'main', url: 'https://github.com/Luncedo/javaApp.git'
+            }
+        }
     }
 }
