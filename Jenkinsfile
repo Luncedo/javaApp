@@ -1,32 +1,19 @@
-pipeline {
+pipeline{
+  tools {
+    maven 'marven-3'
+  }
     agent any
-
-    stages {
-        stage ('Compile Stage') {
-
-            steps {
-                withMaven(maven : 'marven-3') {
-                    sh 'mvn clean compile'
-                }
+    stages{
+        stage("compile stage"){
+            steps{
+             sh 'mvn clean compile'
             }
         }
-
-        stage ('Testing Stage') {
-
-            steps {
-                withMaven(maven : 'marven-3') {
-                    sh 'mvn test'
-                }
-            }
-        }
-
-
-        stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'marven-3') {
-                    sh 'mvn deploy'
-                }
+    stage ('Deployment Stage') {
+            steps{
+             sh 'mvn deploy'
             }
         }
     }
 }
+
