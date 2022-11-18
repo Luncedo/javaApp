@@ -1,17 +1,31 @@
-pipeline{
-  tools {
-    maven 'marven-3'
-  }
+pipeline {
     agent any
-    stages{
-        stage("git checkout"){
-            steps{
-                git branch: 'main', url: 'https://github.com/Luncedo/javaApp.git'
+
+    stages {
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'marven-3') {
+                    sh 'mvn clean compile'
+                }
             }
         }
-        stage("maven build"){
-            steps{
-             sh "mvn clean package"
+
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'marven-3') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'marven-3') {
+                    sh 'mvn deploy'
+                }
             }
         }
     }
